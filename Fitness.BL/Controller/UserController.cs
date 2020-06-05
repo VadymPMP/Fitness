@@ -20,9 +20,44 @@ namespace Fitness.BL.Controller
         /// Creating a new controller for user
         /// </summary>
         /// <param name="user"></param>
-        public UserController(User user)
+        public UserController(string userName, string genderName, DateTime birthDate, double weigth, double height)
         {
-            User = user ?? throw new ArgumentNullException("User can't be empty", nameof(user)); 
+            //TODO: exception 
+            var gender = new Gender(genderName);
+            User = new User(userName, gender, birthDate, weigth, height);
+            
+                //?? throw new ArgumentNullException("User can't be empty", nameof(user)); 
+        }
+        /// <summary>
+        /// Creating a new controller for user
+        /// </summary>
+        /// <param name="user"></param>
+        public UserController()
+        {
+            var formatter = new BinaryFormatter();
+
+            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
+            {
+                if (formatter.Deserialize(fs) is User user)
+                {
+                    User = user;
+                }
+
+
+                // TODO: What we should do if user doesn't load?
+
+
+                //if (formatter.Deserialize(fs) is User user)
+                //{
+                //    return user;
+                //}
+                //else
+                //{
+                //    //throw new FileLoadException("Failed to get data about user from file", "users.dat");
+
+                //}
+
+            }
         }
         /// <summary>
         /// Save data about the user.  
@@ -38,29 +73,6 @@ namespace Fitness.BL.Controller
             
         }
 
-        /// <summary>
-        /// Load data about the user.  
-        /// </summary>
-        /// <returns>Application user.</returns>>
-        public User Load()
-        {
-            var formatter = new BinaryFormatter();
-
-            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                return formatter.Deserialize(fs) as User;
-                //if (formatter.Deserialize(fs) is User user)
-                //{
-                //    return user;
-                //}
-                //else
-                //{
-                //    //throw new FileLoadException("Failed to get data about user from file", "users.dat");
-
-                //}
-
-            }
-        }
 
     }
 }

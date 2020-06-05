@@ -57,7 +57,7 @@ namespace Fitness.BL.Model
                 throw new ArgumentNullException("Name of the user can't be empty", nameof(name));
             }
 
-            if (Gender == null)
+            if (gender == null)
             {
                 throw new ArgumentNullException("Gender can't be empty", nameof(gender));
             }
