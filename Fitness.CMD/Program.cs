@@ -17,25 +17,72 @@ namespace Fitness.CMD
             Console.WriteLine("Input user's name");
             var name = Console.ReadLine();
 
-            Console.WriteLine("Input user's gender");
-            var gender = Console.ReadLine();
+            var userControler = new UserController(name);
 
-            Console.WriteLine("Input user's birthday");
-            var birthdate = DateTime.Parse(Console.ReadLine()); //TODO: rewrite
+            if (userControler.IsNewUSer)
+            {
 
-            Console.WriteLine("Input user's weight");
-            var weight = Double.Parse(Console.ReadLine());
+                Console.WriteLine("Input user's gender");
+                var gender = Console.ReadLine();
 
-            Console.WriteLine("Input user's heighr");
-            var height = Double.Parse(Console.ReadLine());
+                var weight = ParseDouble("weight");
 
-            var userControler = new UserController(name, gender, birthdate, weight, height);
-            userControler.Save(); 
-            //if (name.Length <= 1)
-            //{
+                var height = ParseDouble("height");
 
-            //}
-            //while(Console.ReadLine().Length)
+                var birthDate = ParseDateTime();
+
+                userControler.SetNewUSerData(gender, birthDate, weight, height);
+
+            }
+
+            Console.WriteLine(userControler.CurrentUser);
+            Console.ReadLine();
+        }
+
+
+        /// <summary>
+        /// Parsing DateTime format for my app.
+        /// </summary>
+        /// <returns>DateTime</returns>
+        private static DateTime ParseDateTime()
+        {
+            DateTime birthDate;
+            while (true)
+            {
+                Console.WriteLine("Input user's birthday (dd.MM.yyyy)");
+                if (DateTime.TryParse(Console.ReadLine(), out birthDate))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Wrong date format");
+                }
+            }
+
+            return birthDate;
+        }
+
+        /// <summary>
+        /// Parsing Double format for my app.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>Double</returns>
+        private static double ParseDouble(string name)
+        {
+            while (true)
+            {
+                Console.WriteLine($"Input user's {name}");
+             
+                if (double.TryParse(Console.ReadLine(), out double value))
+                {
+                    return value;
+                }
+                else
+                {
+                    Console.WriteLine($"Wrong {name} format");
+                }
+            }
         }
     }
 }
