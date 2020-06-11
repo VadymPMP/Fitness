@@ -30,22 +30,6 @@ namespace Fitness.BL.Model
         /// Calories for a certain food per 100 grams.
         /// </summary>
         public double Calories { get; }
-        ///// <summary>
-        ///// Calories for a certain food per 1 gram.
-        ///// </summary>
-        //private double CaloriesOneGramm { get { return Calories / 100.0; } }
-        ///// <summary>
-        ///// Calories for a certain food per 1 gram.
-        ///// </summary>
-        //private double CarbohydratesOneGramm { get { return Carbohydrates / 100.0; } }
-        ///// <summary>
-        ///// Carbohydrates for a certain food per 1 gram.
-        ///// </summary>
-        //private double FatsOneGramm {get { return Fats / 100.0; } }
-        ///// <summary>
-        ///// Proteins for certain food per 1 gram.
-        ///// </summary>
-        //private double ProteinsOneGramm { get { return Proteins / 100.0; } }
         /// <summary>
         /// Create a new food.
         /// </summary>
@@ -71,7 +55,10 @@ namespace Fitness.BL.Model
             
 
         }
-
+        /// <summary>
+        /// To display simple food's information
+        /// </summary>
+        /// <returns>String</returns>
         public override string ToString()
         {
             return Name;

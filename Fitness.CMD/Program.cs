@@ -52,7 +52,10 @@ namespace Fitness.CMD
             }
             Console.ReadLine();
         }
-
+        /// <summary>
+        /// Read food information from the console and create an instance of the appropriate class.
+        /// </summary>
+        /// <returns>Cortège(Food, weight)</returns>
         private static (Food Food, double Weight) EnterEating()
         {
             Console.WriteLine("Input the food's name");

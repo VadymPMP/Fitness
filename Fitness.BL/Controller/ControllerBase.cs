@@ -6,8 +6,17 @@ using System.Text;
 
 namespace Fitness.BL.Controller
 {
+
+    /// <summary>
+    /// Basic controller abstract class
+    /// </summary>
     public abstract class ControllerBase
     {
+        /// <summary>
+        /// Template for saving information.
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <param name="item"></param>
         protected void Save(string filename, object item)
         {
             var formatter = new BinaryFormatter();
@@ -18,7 +27,12 @@ namespace Fitness.BL.Controller
             }
 
         }
-
+        /// <summary>
+        /// Template for loading information.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         protected T Load<T>(string filename)
         {
             var formatter = new BinaryFormatter();

@@ -34,7 +34,7 @@ namespace Fitness.BL.Controller
         /// <param name="user"></param>
         public UserController(string userName)
         {
-            //TODO: exception 
+            
             if (string.IsNullOrWhiteSpace(userName))
             {
                 throw new ArgumentNullException("User's name can't be empty", nameof(userName));
@@ -53,8 +53,6 @@ namespace Fitness.BL.Controller
                 Save();
             }
            
-            
-                //?? throw new ArgumentNullException("User can't be empty", nameof(user)); 
         }
         /// <summary>
         /// Get the saved user's list
@@ -68,7 +66,7 @@ namespace Fitness.BL.Controller
 
 
         /// <summary>
-        /// If the user is new, I set all the necessary fields and properties.
+        /// Adding information about a new user.
         /// </summary>
         /// <param name="genderName"></param>
         /// <param name="birthDate"></param>
