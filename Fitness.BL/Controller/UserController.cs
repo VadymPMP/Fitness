@@ -11,8 +11,9 @@ namespace Fitness.BL.Controller
     /// <summary>
     /// User's controller.
     /// </summary>
-    public class UserController
+    public class UserController : ControllerBase
     {
+        private const string UserFileName = "users.dat";
         /// <summary>
         /// List of users.
         /// </summary>
@@ -61,20 +62,8 @@ namespace Fitness.BL.Controller
         /// <returns>List of User</returns>
         private List<User> GetUsersData()
         {
-            var formatter = new BinaryFormatter();
-
-            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
-            {
-                if (fs.Length > 0 && formatter.Deserialize(fs) is List<User> users)
-                {
-                    return users;
-                }
-                else
-                {
-                    return new List<User>();
-                }
-                // TODO: What we should do if user doesn't load?
-            }
+            return Load<List<User>>(UserFileName) ?? new List<User>();
+            
         }
 
 
@@ -99,15 +88,8 @@ namespace Fitness.BL.Controller
         /// </summary>
         public void Save()
         {
-            var formatter = new BinaryFormatter();
-
-            using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate)) 
-            {
-                formatter.Serialize(fs, Users);    
-            }
+            Save(UserFileName, Users);
             
         }
-
-
     }
 }

@@ -17,9 +17,10 @@ namespace Fitness.CMD
             Console.WriteLine("Input user's name");
             var name = Console.ReadLine();
 
-            var userControler = new UserController(name);
+            var userController = new UserController(name);
+            var eatingController = new EatingController(userController.CurrentUser);
 
-            if (userControler.IsNewUSer)
+            if (userController.IsNewUSer)
             {
 
                 Console.WriteLine("Input user's gender");
@@ -31,12 +32,40 @@ namespace Fitness.CMD
 
                 var birthDate = ParseDateTime();
 
-                userControler.SetNewUSerData(gender, birthDate, weight, height);
+                userController.SetNewUSerData(gender, birthDate, weight, height);
 
             }
 
-            Console.WriteLine(userControler.CurrentUser);
+            Console.WriteLine(userController.CurrentUser);
+            Console.WriteLine("Would you like to do? ");
+            Console.WriteLine("E - input eating food");
+            var key = Console.ReadKey();
+            Console.WriteLine();
+            if (key.Key == ConsoleKey.E)
+            {
+                var foods = EnterEating();
+                eatingController.Add(foods.Food, foods.Weight);
+                foreach (var item in eatingController.Eating.Foods)
+                {
+                    Console.WriteLine($"\t{item.Key} - {item.Value} ");
+                }
+            }
             Console.ReadLine();
+        }
+
+        private static (Food Food, double Weight) EnterEating()
+        {
+            Console.WriteLine("Input the food's name");
+            var food = Console.ReadLine();
+
+            var calories = ParseDouble("calories of the food");
+            var proteins = ParseDouble("proteins of the food");
+            var fats = ParseDouble("fats of the food");
+            var carbohydrates = ParseDouble("carbohydrates of the food");
+
+            var weight = ParseDouble("weight of the food");
+            var product = new Food(food, calories, proteins, fats, carbohydrates);
+            return (Food : product, Weight : weight);
         }
 
 
@@ -64,7 +93,7 @@ namespace Fitness.CMD
         }
 
         /// <summary>
-        /// Parsing Double format for my app.
+        /// Parsing Double format for my app. 
         /// </summary>
         /// <param name="name"></param>
         /// <returns>Double</returns>
