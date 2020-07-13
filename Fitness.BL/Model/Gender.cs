@@ -5,7 +5,7 @@ using System.Text;
 namespace Fitness.BL.Model
 {
     /// <summary>
-    ///  Gender.
+    ///  Class about gender.
     /// </summary>
     [Serializable]
     public class Gender
@@ -26,7 +26,10 @@ namespace Fitness.BL.Model
             }
             Name = name;
         }
-
+        /// <summary>
+        /// To display simple gender's information
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Name;

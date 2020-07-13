@@ -6,7 +6,7 @@ using System.Text;
 namespace Fitness.BL.Model
 {
     /// <summary>
-    /// Eating foods.
+    /// Class about eating foods.
     /// </summary>
     [Serializable]
     public class Eating

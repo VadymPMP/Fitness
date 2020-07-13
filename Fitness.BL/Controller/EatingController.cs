@@ -11,6 +11,7 @@ namespace Fitness.BL.Controller
     /// <summary>
     /// Eating controller
     /// </summary>
+    [Serializable]
     public class EatingController : ControllerBase
     {
         /// <summary>

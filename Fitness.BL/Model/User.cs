@@ -5,7 +5,7 @@ using System.Text;
 namespace Fitness.BL.Model
 {
     /// <summary>
-    /// User.
+    /// Class about User.
     /// </summary>
     [Serializable]
     public class User
