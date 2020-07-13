@@ -2,7 +2,9 @@
 using Fitness.BL.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,9 +14,11 @@ namespace Fitness.CMD
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to the application Fitness");
+            var culture = CultureInfo.CreateSpecificCulture("en");
+            var resourceManager = new ResourceManager("Fitness.CMD.Languages.Messages", typeof(Program).Assembly);
+            Console.WriteLine(resourceManager.GetString("Hello", culture));
              
-            Console.WriteLine("Input user's name");
+            Console.WriteLine(resourceManager.GetString("EnterName", culture));
             var name = Console.ReadLine();
 
             var userController = new UserController(name);
@@ -23,7 +27,7 @@ namespace Fitness.CMD
             if (userController.IsNewUSer)
             {
 
-                Console.WriteLine("Input user's gender");
+                Console.WriteLine(resourceManager.GetString("EnterGender", culture));
                 var gender = Console.ReadLine();
 
                 var weight = ParseDouble("weight");
