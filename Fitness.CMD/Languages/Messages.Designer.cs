@@ -61,6 +61,87 @@ namespace Fitness.CMD.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to початок вправи.
+        /// </summary>
+        internal static string Begin {
+            get {
+                return ResourceManager.GetString("Begin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to калорiї в продукту.
+        /// </summary>
+        internal static string Calories {
+            get {
+                return ResourceManager.GetString("Calories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to вуглеводи в продукту.
+        /// </summary>
+        internal static string Carboh {
+            get {
+                return ResourceManager.GetString("Carboh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Що ви хочете зробити?.
+        /// </summary>
+        internal static string Choose {
+            get {
+                return ResourceManager.GetString("Choose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (dd.MM.yyyy).
+        /// </summary>
+        internal static string Da {
+            get {
+                return ResourceManager.GetString("Da", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to дата народження.
+        /// </summary>
+        internal static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E - ввести інформацію про харчування.
+        /// </summary>
+        internal static string Eating {
+            get {
+                return ResourceManager.GetString("Eating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to закінчення вправи.
+        /// </summary>
+        internal static string End {
+            get {
+                return ResourceManager.GetString("End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Витрати енергiї за хвилину.
+        /// </summary>
+        internal static string Energy {
+            get {
+                return ResourceManager.GetString("Energy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Введiть гендер.
         /// </summary>
         internal static string EnterGender {
@@ -79,11 +160,146 @@ namespace Fitness.CMD.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Введiть назву вправи:.
+        /// </summary>
+        internal static string ExerciseName {
+            get {
+                return ResourceManager.GetString("ExerciseName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A - ввести інформацію про заняття спортом.
+        /// </summary>
+        internal static string Exercises {
+            get {
+                return ResourceManager.GetString("Exercises", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Q - Вийти.
+        /// </summary>
+        internal static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to жири в продукту.
+        /// </summary>
+        internal static string Fats {
+            get {
+                return ResourceManager.GetString("Fats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to формат.
+        /// </summary>
+        internal static string Fo {
+            get {
+                return ResourceManager.GetString("Fo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Введіть назву продукту:.
+        /// </summary>
+        internal static string FoodName {
+            get {
+                return ResourceManager.GetString("FoodName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to від.
+        /// </summary>
+        internal static string From {
+            get {
+                return ResourceManager.GetString("From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to зрiст.
+        /// </summary>
+        internal static string He {
+            get {
+                return ResourceManager.GetString("He", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вас вiтає програма Фiтнес.
         /// </summary>
         internal static string Hello {
             get {
                 return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Введiть.
+        /// </summary>
+        internal static string In {
+            get {
+                return ResourceManager.GetString("In", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to блiки в продукту.
+        /// </summary>
+        internal static string Proteins {
+            get {
+                return ResourceManager.GetString("Proteins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to до.
+        /// </summary>
+        internal static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to користувача.
+        /// </summary>
+        internal static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to вага.
+        /// </summary>
+        internal static string We {
+            get {
+                return ResourceManager.GetString("We", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to вага прийому їжi.
+        /// </summary>
+        internal static string Weight {
+            get {
+                return ResourceManager.GetString("Weight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Не правильний.
+        /// </summary>
+        internal static string Wr {
+            get {
+                return ResourceManager.GetString("Wr", resourceCulture);
             }
         }
     }

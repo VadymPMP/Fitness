@@ -117,13 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Begin" xml:space="preserve">
+    <value>початок вправи</value>
+  </data>
+  <data name="Calories" xml:space="preserve">
+    <value>калорiї в продукту</value>
+  </data>
+  <data name="Carboh" xml:space="preserve">
+    <value>вуглеводи в продукту</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Що ви хочете зробити?</value>
+  </data>
+  <data name="Da" xml:space="preserve">
+    <value>(dd.MM.yyyy)</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>дата народження</value>
+  </data>
+  <data name="Eating" xml:space="preserve">
+    <value>E - ввести інформацію про харчування</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>закінчення вправи</value>
+  </data>
+  <data name="Energy" xml:space="preserve">
+    <value>Витрати енергiї за хвилину</value>
+  </data>
   <data name="EnterGender" xml:space="preserve">
     <value>Введiть гендер</value>
   </data>
   <data name="EnterName" xml:space="preserve">
     <value>Введiть iм'я користувача</value>
   </data>
+  <data name="ExerciseName" xml:space="preserve">
+    <value>Введiть назву вправи:</value>
+  </data>
+  <data name="Exercises" xml:space="preserve">
+    <value>A - ввести інформацію про заняття спортом</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Q - Вийти</value>
+  </data>
+  <data name="Fats" xml:space="preserve">
+    <value>жири в продукту</value>
+  </data>
+  <data name="Fo" xml:space="preserve">
+    <value>формат</value>
+  </data>
+  <data name="FoodName" xml:space="preserve">
+    <value>Введіть назву продукту:</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>від</value>
+  </data>
+  <data name="He" xml:space="preserve">
+    <value>зрiст</value>
+  </data>
   <data name="Hello" xml:space="preserve">
     <value>Вас вiтає програма Фiтнес</value>
+  </data>
+  <data name="In" xml:space="preserve">
+    <value>Введiть</value>
+  </data>
+  <data name="Proteins" xml:space="preserve">
+    <value>блiки в продукту</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>до</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>користувача</value>
+  </data>
+  <data name="We" xml:space="preserve">
+    <value>вага</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>вага прийому їжi</value>
+  </data>
+  <data name="Wr" xml:space="preserve">
+    <value>Не правильний</value>
   </data>
 </root>

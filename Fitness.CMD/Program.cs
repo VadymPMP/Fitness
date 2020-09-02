@@ -31,11 +31,11 @@ namespace Fitness.CMD
                 Console.WriteLine(resourceManager.GetString("EnterGender", culture));
                 var gender = Console.ReadLine();
 
-                var weight = ParseDouble("weight");
+                var weight = ParseDouble(resourceManager.GetString("We",culture), resourceManager, culture);
 
-                var height = ParseDouble("height");
+                var height = ParseDouble(resourceManager.GetString("He", culture), resourceManager, culture);
 
-                var birthDate = ParseDateTime("date of birth");
+                var birthDate = ParseDateTime(resourceManager.GetString("Date", culture), resourceManager, culture);
 
                 userController.SetNewUSerData(gender, birthDate, weight, height);
 
@@ -44,16 +44,16 @@ namespace Fitness.CMD
             {
 
                 Console.WriteLine(userController.CurrentUser);
-                Console.WriteLine("Would you like to do? ");
-                Console.WriteLine("E - input eating food");
-                Console.WriteLine("A - input doing exercises");
-                Console.WriteLine("Q - Quit");
+                Console.WriteLine(resourceManager.GetString("Choose", culture));
+                Console.WriteLine(resourceManager.GetString("Eating", culture));
+                Console.WriteLine(resourceManager.GetString("Exercises", culture));
+                Console.WriteLine(resourceManager.GetString("Exit", culture));
                 var key = Console.ReadKey();
                 Console.WriteLine();
                 switch (key.Key)
                 {
                     case ConsoleKey.E:
-                        var foods = EnterEating();
+                        var foods = EnterEating(resourceManager, culture);
                         eatingController.Add(foods.Food, foods.Weight);
                         foreach (var item in eatingController.Eating.Foods)
                         {
@@ -61,12 +61,12 @@ namespace Fitness.CMD
                         }
                         break;
                     case ConsoleKey.A:
-                        var exe = EnterExercise();
+                        var exe = EnterExercise(resourceManager, culture);
                         //var exercise = new Exercise(exe.begin, exe.end, exe.activity, userController.CurrentUser);
                         exerciseController.Add(exe.activity, exe.begin, exe.end);
                         foreach (var item in exerciseController.Exercises)
                         {
-                            Console.WriteLine($"\t{item.Activity} from {item.Start.ToShortTimeString()} to {item.Finish.ToShortTimeString()};  ");
+                            Console.WriteLine($"\t{item.Activity} {resourceManager.GetString("From", culture)} {item.Start.ToShortTimeString()} {resourceManager.GetString("To", culture)} {item.Finish.ToShortTimeString()};  ");
                         }
                         break;
                     case ConsoleKey.Q:
@@ -82,13 +82,13 @@ namespace Fitness.CMD
         /// </summary>
         /// <returns>Cortège(DateTime Begin, DateTime End, Activity activity)</returns>
 
-        private static (DateTime begin, DateTime end, Activity activity) EnterExercise()
+        private static (DateTime begin, DateTime end, Activity activity) EnterExercise(ResourceManager resourceManager, CultureInfo culture)
         {
-            Console.Write("Input the exercise name: ");
+            Console.Write(resourceManager.GetString("ExerciseName", culture));
             var name = Console.ReadLine();
-            var energy = ParseDouble("Energy consumption per minute");
-            var begin = ParseDateTime("begin exercise");
-            var end = ParseDateTime("end exercise");
+            var energy = ParseDouble(resourceManager.GetString("Energy", culture), resourceManager, culture);
+            var begin = ParseDateTime(resourceManager.GetString("Begin", culture), resourceManager, culture);
+            var end = ParseDateTime(resourceManager.GetString("End", culture), resourceManager, culture);
             var activity = new Activity(name, energy);
             return (begin, end, activity);
         }
@@ -97,17 +97,17 @@ namespace Fitness.CMD
         /// Read food information from the console and create an instance of the appropriate class.
         /// </summary>
         /// <returns>Cortège(Food food, double weight)</returns>
-        private static (Food Food, double Weight) EnterEating()
+        private static (Food Food, double Weight) EnterEating(ResourceManager resourceManager, CultureInfo culture)
         {
-            Console.Write("Input the food's name: ");
+            Console.Write(resourceManager.GetString("FoodName", culture));
             var food = Console.ReadLine();
 
-            var calories = ParseDouble("calories of the food");
-            var proteins = ParseDouble("proteins of the food");
-            var fats = ParseDouble("fats of the food");
-            var carbohydrates = ParseDouble("carbohydrates of the food");
+            var calories = ParseDouble(resourceManager.GetString("Calories", culture), resourceManager, culture);
+            var proteins = ParseDouble(resourceManager.GetString("Proteins", culture), resourceManager, culture);
+            var fats = ParseDouble(resourceManager.GetString("Fats", culture), resourceManager, culture);
+            var carbohydrates = ParseDouble(resourceManager.GetString("Carboh", culture), resourceManager, culture);
 
-            var weight = ParseDouble("weight of the food");
+            var weight = ParseDouble(resourceManager.GetString("Weight", culture), resourceManager, culture);
             var product = new Food(food, calories, proteins, fats, carbohydrates);
             return (Food : product, Weight : weight);
         }
@@ -117,19 +117,19 @@ namespace Fitness.CMD
         /// Parsing DateTime format for my app.
         /// </summary>
         /// <returns>DateTime</returns>
-        private static DateTime ParseDateTime(string value)
+        private static DateTime ParseDateTime(string value, ResourceManager resourceManager, CultureInfo culture)
         {
             DateTime birthDate;
             while (true)
             {
-                Console.WriteLine($"Input {value} (dd.MM.yyyy)");
+                Console.WriteLine($"{resourceManager.GetString("In", culture)} {value} {resourceManager.GetString("Da", culture)}");
                 if (DateTime.TryParse(Console.ReadLine(), out birthDate))
                 {
                     break;
                 }
                 else
                 {
-                    Console.WriteLine($"Wrong {value} format");
+                    Console.WriteLine($"{resourceManager.GetString("Wr", culture)} {value} {resourceManager.GetString("Fo", culture)}");
                 }
             }
 
@@ -141,11 +141,11 @@ namespace Fitness.CMD
         /// </summary>
         /// <param name="name"></param>
         /// <returns>Double</returns>
-        private static double ParseDouble(string name)
+        private static double ParseDouble(string name, ResourceManager resourceManager, CultureInfo culture)
         {
             while (true)
             {
-                Console.WriteLine($"Input user's {name}");
+                Console.WriteLine($"{resourceManager.GetString("In", culture)} {resourceManager.GetString("User", culture)} {name}");
              
                 if (double.TryParse(Console.ReadLine(), out double value))
                 {
@@ -153,7 +153,7 @@ namespace Fitness.CMD
                 }
                 else
                 {
-                    Console.WriteLine($"Wrong {name} format");
+                    Console.WriteLine($"{resourceManager.GetString("Wr", culture)} {name} {resourceManager.GetString("Fo", culture)}");
                 }
             }
         }
