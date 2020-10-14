@@ -10,15 +10,16 @@ namespace Fitness.BL.Model
     [Serializable]
     public class Activity
     {
+        public int Id { get; set; }
      
         /// <summary>
         /// Activity name
         /// </summary>
-        public string Name { get;}
+        public string Name { get; set; }
         /// <summary>
         /// The number of calories expended during exercise
         /// </summary>
-        public double CaloriesPerMinute { get; }
+        public double CaloriesPerMinute { get; set; }
 
         /// <summary>
         /// Creating new activity

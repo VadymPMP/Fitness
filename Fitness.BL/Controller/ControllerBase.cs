@@ -12,6 +12,10 @@ namespace Fitness.BL.Controller
     /// </summary>
     public abstract class ControllerBase
     {
+
+        protected IDataSaver saver = new SerializeDataSaver();
+
+
         /// <summary>
         /// Template for saving information.
         /// </summary>
@@ -19,13 +23,7 @@ namespace Fitness.BL.Controller
         /// <param name="item"></param>
         protected void Save(string filename, object item)
         {
-            var formatter = new BinaryFormatter();
-
-            using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
-            {
-                formatter.Serialize(fs, item);
-            }
-
+            saver.Save(filename, item);
         }
         /// <summary>
         /// Template for loading information.
@@ -35,20 +33,8 @@ namespace Fitness.BL.Controller
         /// <returns></returns>
         protected T Load<T>(string filename)
         {
-            var formatter = new BinaryFormatter();
 
-            using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
-            {
-                if (fs.Length > 0 && formatter.Deserialize(fs) is T items)
-                {
-                    return items;
-                }
-                else
-                {
-                    return default(T);
-                }
-            }
-
+            return saver.Load<T>(filename);
         }
     }
 }

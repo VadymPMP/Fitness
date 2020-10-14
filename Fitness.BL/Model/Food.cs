@@ -10,26 +10,27 @@ namespace Fitness.BL.Model
     [Serializable]
     public class Food
     {
+        public int Id { get; set; }
         /// <summary>
         /// The name of food.
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
         /// <summary>
         /// Proteins for certain food per 100 grams.
         /// </summary>
-        public double Proteins { get; }
+        public double Proteins { get; set; }
         /// <summary>
         /// Fats for a certain food per 100 grams.
         /// </summary>
-        public double Fats { get; }
+        public double Fats { get; set; }
         /// <summary>
         /// Carbohydrates for a certain food per 100 grams.
         /// </summary>
-        public double Carbohydrates { get; }
+        public double Carbohydrates { get; set; }
         /// <summary>
         /// Calories for a certain food per 100 grams.
         /// </summary>
-        public double Calories { get; }
+        public double Calories { get; set; }
         /// <summary>
         /// Create a new food.
         /// </summary>

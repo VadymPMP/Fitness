@@ -10,11 +10,12 @@ namespace Fitness.BL.Model
     [Serializable]
     public class User
     {
+        public int Id { get; set; }
         #region User class properties
         /// <summary>
         /// Name of the user.
         /// </summary>
-        public string Name { get; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gender of the user.

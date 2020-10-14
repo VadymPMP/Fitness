@@ -62,8 +62,6 @@ namespace Fitness.CMD
                         break;
                     case ConsoleKey.A:
                         var exe = EnterExercise(resourceManager, culture);
-                        //var exercise = new Exercise(exe.begin, exe.end, exe.activity, userController.CurrentUser);
-                        exerciseController.Add(exe.activity, exe.begin, exe.end);
                         foreach (var item in exerciseController.Exercises)
                         {
                             Console.WriteLine($"\t{item.Activity} {resourceManager.GetString("From", culture)} {item.Start.ToShortTimeString()} {resourceManager.GetString("To", culture)} {item.Finish.ToShortTimeString()};  ");
