@@ -10,7 +10,7 @@ namespace Fitness.BL.Controller
 {
     class FitnessContext: DbContext
     {
-        public static 
+        public static string connectionString = "adada";
         public FitnessContext(string connectionString) : base(GetOptions(connectionString))
         {
         }
