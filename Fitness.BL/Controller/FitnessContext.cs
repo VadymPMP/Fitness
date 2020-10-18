@@ -5,19 +5,37 @@ using System.Data;
 using System.Collections.Generic;
 using System.Text;
 using Fitness.BL.Model;
+using Microsoft.Extensions.Configuration;
+using System.IO;
+using System.Reflection;
 
 namespace Fitness.BL.Controller
 {
     class FitnessContext: DbContext
     {
-        public static string connectionString = "adada";
-        public FitnessContext(string connectionString) : base(GetOptions(connectionString))
-        {
-        }
+        //private string connectionString;
 
-        private static DbContextOptions GetOptions(string connectionString)
+        //public FitnessContext() : base()
+        //{
+        //    var builder = new ConfigurationBuilder();
+        //    builder.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)).AddJsonFile("appsettings.json", optional: false);
+
+        //    var configuration = builder.Build();
+
+        //    connectionString = configuration.GetConnectionString("SQLConnection").ToString();
+
+        //}
+
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(connectionString);
+        //}
+        private const string connectionString = "Server=(localdb)\\mssqllocaldb;Database=FitnessDB;Trusted_Connection=True;MultipleActiveResultSets=true";
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
+            optionsBuilder.UseSqlServer(connectionString);
         }
 
         public DbSet<Activity> Activities { get; set; }

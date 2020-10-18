@@ -11,7 +11,7 @@ namespace Fitness.BL.Controller
     /// <summary>
     /// User's controller.
     /// </summary>
-    public class UserController : ControllerBase
+    public class UserController : ControllerBase<User>
     {
         private const string UserFileName = "users.dat";
         /// <summary>
@@ -60,7 +60,8 @@ namespace Fitness.BL.Controller
         /// <returns>List of User</returns>
         private List<User> GetUsersData()
         {
-            return Load<List<User>>(UserFileName) ?? new List<User>();
+            return; 
+            //return Load<List<User>>(UserFileName) ?? new List<User>();
             
         }
 
@@ -86,7 +87,7 @@ namespace Fitness.BL.Controller
         /// </summary>
         public void Save()
         {
-            Save(UserFileName, Users);
+            //Save(UserFileName, Users);
             
         }
     }

@@ -12,7 +12,7 @@ namespace Fitness.BL.Controller
     /// Eating controller
     /// </summary>
     [Serializable]
-    public class EatingController : ControllerBase
+    public class EatingController : ControllerBase<Eating>
     {
         /// <summary>
         /// File's name with information about foods
@@ -49,18 +49,18 @@ namespace Fitness.BL.Controller
         /// </summary>
         /// <param name="food"></param>
         /// <param name="weight"></param>
-        public void Add(Food food, double weight)
+        public void Add(Food food)
         {
             var product = Foods.SingleOrDefault(f => f.Name == food.Name);
             if (product == null)
             {
                 Foods.Add(food);
-                Eating.Add(food, weight);
+                Eating.Add(food);
                 Save();
             }
             else
             {
-                Eating.Add(product, weight);
+                Eating.Add(product);
                 Save();
             }
         }
@@ -70,7 +70,7 @@ namespace Fitness.BL.Controller
         /// <returns>List of Eating.</returns>
         private Eating GetEating()
         {
-            return Load<Eating>(EatingsFileName) ?? new Eating(user);
+            return Load().First();
         }
         /// <summary>
         /// Get the saved food's list.
@@ -78,15 +78,15 @@ namespace Fitness.BL.Controller
         /// <returns>List of Food.</returns>
         private List<Food> GetAllFoods()
         {
-            return Load<List<Food>>(FoodsFileName) ?? new List<Food>();
+            return Load();
         }
         /// <summary>
         /// Save data about foods and eatings.
         /// </summary>
         private void Save()
         {
-            Save(FoodsFileName, Foods);
-            Save(EatingsFileName, Eating);
+            Save();
+            Save();
         }
 
 

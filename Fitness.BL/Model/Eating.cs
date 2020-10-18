@@ -16,37 +16,36 @@ namespace Fitness.BL.Model
         /// <summary>
         /// Dictionary about foods.
         /// </summary>
-        public Dictionary<Food, double> Foods { get; set; }
+        public List<Food> Foods { get; set; }
         
         public int UserId { get; set; }
         public virtual User User { get; set; }
+
+        public Eating() { }
         /// <summary>
         /// Create a new Eating.
         /// </summary>
         /// <param name="user"></param>
+
         public Eating(User user) 
         {
             User = user ?? throw new ArgumentNullException("Name of the user can't be empty", nameof(user));
             Moment = DateTime.UtcNow;
-            Foods = new Dictionary<Food, double>();
+            Foods = new List<Food>();
         }
         /// <summary>
         /// Adding the new food and weight of the food
         /// </summary>
         /// <param name="food"></param>
         /// <param name="weight"></param>
-        public void Add(Food food, double weight)
+        public void Add(Food food)
         {
             
-            var product = Foods.Keys.SingleOrDefault(f => f.Name.Equals(food.Name));
+            var product = Foods.SingleOrDefault(f => f.Name.Equals(food.Name));
 
             if (product == null)
             {
-                Foods.Add(food, weight);
-            }
-            else
-            {
-                Foods[product] += weight;
+                Foods.Add(food);
             }
                  
         }

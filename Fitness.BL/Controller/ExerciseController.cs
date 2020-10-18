@@ -10,7 +10,7 @@ namespace Fitness.BL.Controller
     /// <summary>
     /// Exercises controller
     /// </summary>
-    public class ExerciseController : ControllerBase
+    public class ExerciseController : ControllerBase<Exercise>
     {
         /// <summary>
         /// File's name with information about exercises

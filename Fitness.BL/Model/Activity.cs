@@ -21,6 +21,7 @@ namespace Fitness.BL.Model
         /// </summary>
         public double CaloriesPerMinute { get; set; }
 
+        public Activity(string name) : this(name, 0) { }
         /// <summary>
         /// Creating new activity
         /// </summary>

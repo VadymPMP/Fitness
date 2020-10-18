@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Fitness.BL.Controller
 {
-    public interface IDataSaver
+    public interface IDataSaver<T> where T: class
     {
-        void Save(string filename, object item);
+        void Save(T item);
 
-        T Load<T>(string filename);
+        List<T> Load();
     }
 }

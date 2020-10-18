@@ -10,31 +10,40 @@ namespace Fitness.BL.Controller
     /// <summary>
     /// Basic controller abstract class
     /// </summary>
-    public abstract class ControllerBase
+    public abstract class ControllerBase<T> where T: class
     {
-
-        protected IDataSaver saver = new SerializeDataSaver();
-
-
-        /// <summary>
-        /// Template for saving information.
-        /// </summary>
-        /// <param name="filename"></param>
-        /// <param name="item"></param>
-        protected void Save(string filename, object item)
+        protected IDataSaver<T> manager = new SerializeDataSaver<T>();
+        protected void Save(T item)
         {
-            saver.Save(filename, item);
+            manager.Save(item);
         }
-        /// <summary>
-        /// Template for loading information.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="filename"></param>
-        /// <returns></returns>
-        protected T Load<T>(string filename)
-        {
 
-            return saver.Load<T>(filename);
+        protected List<T> Load()
+        {
+            return manager.Load();
         }
+        //protected IDataSaver<> saver = new SerializeDataSaver();
+
+
+        ///// <summary>
+        ///// Template for saving information.
+        ///// </summary>
+        ///// <param name="filename"></param>
+        ///// <param name="item"></param>
+        //protected void Save(string filename, object item)
+        //{
+        //    saver.Save(filename, item);
+        //}
+        ///// <summary>
+        ///// Template for loading information.
+        ///// </summary>
+        ///// <typeparam name="T"></typeparam>
+        ///// <param name="filename"></param>
+        ///// <returns></returns>
+        //protected T Load<T>(string filename) where T: class
+        //{
+
+        //    return saver.Load<T>(filename);
+        //}
     }
 }

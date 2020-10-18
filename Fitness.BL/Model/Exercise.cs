@@ -31,6 +31,8 @@ namespace Fitness.BL.Model
         /// 
         public int UserId { get; set; }
         public virtual User User { get; set; }
+
+        public Exercise() { }
         /// <summary>
         /// Creating the new Exercise
         /// </summary>
@@ -38,6 +40,8 @@ namespace Fitness.BL.Model
         /// <param name="finish"></param>
         /// <param name="activity"></param>
         /// <param name="user"></param>
+        /// 
+        
         public Exercise(DateTime start, DateTime finish, Activity activity, User user)
         {
             // Exception
