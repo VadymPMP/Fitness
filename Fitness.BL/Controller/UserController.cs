@@ -68,12 +68,11 @@ namespace Fitness.BL.Controller
         /// Adding information about a new user.
         /// </summary>
         /// <param name="genderName"></param>
-        /// <param name="birthDate"></param>
         /// <param name="weight"></param>
         /// <param name="height"></param>
         public void SetNewUserData(string genderName, double weight = 1, double height = 1)
         {
-            // Проверка
+            // Exeption
 
             CurrentUser.Gender = new Gender(genderName);
             CurrentUser.Weight = weight;

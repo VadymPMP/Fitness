@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+
 
 namespace Fitness.BL.Model
 {
@@ -10,7 +10,7 @@ namespace Fitness.BL.Model
     [Serializable]
     public class User
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         #region User class properties
         /// <summary>
         /// Name of the user.
@@ -53,7 +53,7 @@ namespace Fitness.BL.Model
         /// <param name="gender"></param>
         /// <param name="weight"></param>
         /// <param name="height"></param>
-//DateTime nowDate = DateTime.Today;
+        //DateTime nowDate = DateTime.Today;
         //int age = nowDate.Year - birthDate.Year;
         //if (birthDate > nowDate.AddYears(-age)) age--;
 
@@ -65,27 +65,27 @@ namespace Fitness.BL.Model
                     double weight,
                     double height)
         {
-            #region Проверка условий
+            #region 
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("Имя пользователя не может быть пустым или null", nameof(name));
+                throw new ArgumentNullException("User name can't be empty or null", nameof(name));
             }
 
             if (gender == null)
             {
-                throw new ArgumentNullException("Пол не может быть null.", nameof(gender));
+                throw new ArgumentNullException("Gender can't be null.", nameof(gender));
             }
 
            
 
             if (weight <= 0)
             {
-                throw new ArgumentException("Вес не может быть меньше либо равен нулю.", nameof(weight));
+                throw new ArgumentException("Weight can't be <= 0 .", nameof(weight));
             }
 
             if (height <= 0)
             {
-                throw new ArgumentException("Рост не может быть меньше либо равен нулю.", nameof(height));
+                throw new ArgumentException("Height can't be <= 0 .", nameof(height));
             }
             #endregion
 

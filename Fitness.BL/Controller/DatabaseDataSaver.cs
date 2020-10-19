@@ -14,8 +14,8 @@ namespace Fitness.BL.Controller
         {
             using (var db = new FitnessContext())
             {
-                var resault = db.Set<T>().Where(t => true).ToList();
-                return resault;
+                var result = db.Set<T>().Where(t => true).ToList();
+                return result;
             }
         }
 

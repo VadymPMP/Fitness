@@ -142,7 +142,7 @@ namespace Fitness.BL.Migrations
 
             modelBuilder.Entity("Fitness.BL.Model.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -159,7 +159,7 @@ namespace Fitness.BL.Migrations
                     b.Property<double>("Weight")
                         .HasColumnType("float");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.HasIndex("GenderId");
 
