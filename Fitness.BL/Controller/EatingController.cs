@@ -12,16 +12,8 @@ namespace Fitness.BL.Controller
     /// Eating controller
     /// </summary>
     [Serializable]
-    public class EatingController : ControllerBase<Eating>
+    public class EatingController : ControllerBase
     {
-        /// <summary>
-        /// File's name with information about foods
-        /// </summary>
-        private const string FoodsFileName = "foods.dat";
-        /// <summary>
-        /// File's name with information about eating
-        /// </summary>
-        private const string EatingsFileName = "eatings.dat";
         /// <summary>
         /// Our current user.
         /// </summary>
@@ -49,18 +41,18 @@ namespace Fitness.BL.Controller
         /// </summary>
         /// <param name="food"></param>
         /// <param name="weight"></param>
-        public void Add(Food food)
+        public void Add(Food food, double weight)
         {
             var product = Foods.SingleOrDefault(f => f.Name == food.Name);
             if (product == null)
             {
                 Foods.Add(food);
-                Eating.Add(food);
+                Eating.Add(food, weight);
                 Save();
             }
             else
             {
-                Eating.Add(product);
+                Eating.Add(product, weight);
                 Save();
             }
         }
@@ -70,7 +62,7 @@ namespace Fitness.BL.Controller
         /// <returns>List of Eating.</returns>
         private Eating GetEating()
         {
-            return Load().First();
+            return Load<Eating>().FirstOrDefault() ?? new Eating(user);
         }
         /// <summary>
         /// Get the saved food's list.
@@ -78,15 +70,15 @@ namespace Fitness.BL.Controller
         /// <returns>List of Food.</returns>
         private List<Food> GetAllFoods()
         {
-            return Load();
+            return Load<Food>() ?? new List<Food>();
         }
         /// <summary>
         /// Save data about foods and eatings.
         /// </summary>
         private void Save()
         {
-            Save();
-            Save();
+            Save(Foods);
+            Save(new List<Eating>() {Eating});
         }
 
 

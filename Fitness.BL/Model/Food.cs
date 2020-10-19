@@ -31,11 +31,15 @@ namespace Fitness.BL.Model
         /// Calories for a certain food per 100 grams.
         /// </summary>
         public double Calories { get; set; }
+
+        
+
+        public virtual ICollection<Eating> Eatings { get; set; }
         /// <summary>
         /// Create a new food.
         /// </summary>
         /// <param name="name"></param>
-        public Food(string name): this (name, 0, 0, 0, 0) { }
+        public Food() { }
 
         /// <summary>
         /// Create a new food.

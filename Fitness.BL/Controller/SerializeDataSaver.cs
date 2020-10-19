@@ -6,13 +6,13 @@ using System.Text;
 
 namespace Fitness.BL.Controller
 {
-    class SerializeDataSaver<T> : IDataSaver<T> where T: class
+    class SerializeDataSaver : IDataSaver
     {
 
-        public List<T> Load()
+        public List<T> Load<T>() where T : class
         {
             var formatter = new BinaryFormatter();
-            var filename = typeof(T) + ".dat";
+            var filename = typeof(T).Name;
 
             using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
@@ -27,10 +27,10 @@ namespace Fitness.BL.Controller
             }
         }
 
-        public void Save(T item)
+        public void Save<T>(List<T> item) where T : class
         {
             var formatter = new BinaryFormatter();
-            var filename = typeof(T) + ".dat";
+            var filename = typeof(T).Name;
             using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
                 formatter.Serialize(fs, item);

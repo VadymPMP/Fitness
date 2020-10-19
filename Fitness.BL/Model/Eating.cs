@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
@@ -9,6 +10,7 @@ namespace Fitness.BL.Model
     /// Class about eating foods.
     /// </summary>
     [Serializable]
+    [NotMapped]
     public class Eating
     {
         public int Id { get; set; }
@@ -16,8 +18,8 @@ namespace Fitness.BL.Model
         /// <summary>
         /// Dictionary about foods.
         /// </summary>
-        public List<Food> Foods { get; set; }
-        
+        public Dictionary<Food, double> Foods { get; set; }
+
         public int UserId { get; set; }
         public virtual User User { get; set; }
 
@@ -31,23 +33,27 @@ namespace Fitness.BL.Model
         {
             User = user ?? throw new ArgumentNullException("Name of the user can't be empty", nameof(user));
             Moment = DateTime.UtcNow;
-            Foods = new List<Food>();
+            Foods = new Dictionary<Food, double>();
         }
         /// <summary>
         /// Adding the new food and weight of the food
         /// </summary>
         /// <param name="food"></param>
         /// <param name="weight"></param>
-        public void Add(Food food)
+        public void Add(Food food, double weight)
         {
             
-            var product = Foods.SingleOrDefault(f => f.Name.Equals(food.Name));
+            var product = Foods.Keys.SingleOrDefault(f => f.Name.Equals(food.Name));
 
             if (product == null)
             {
-                Foods.Add(food);
+                Foods.Add(food, weight);
             }
-                 
+            else
+            {
+                Foods[product] += weight;
+            }
+
         }
     }
 }

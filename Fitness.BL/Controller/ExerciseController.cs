@@ -10,17 +10,8 @@ namespace Fitness.BL.Controller
     /// <summary>
     /// Exercises controller
     /// </summary>
-    public class ExerciseController : ControllerBase<Exercise>
+    public class ExerciseController : ControllerBase
     {
-        /// <summary>
-        /// File's name with information about exercises
-        /// </summary>
-        private const string ExercisesFileName = "exercises.dat";
-
-        /// <summary>
-        /// File's name with information about activities
-        /// </summary>
-        private const string ActivitiesFileName = "activities.dat";
 
         /// <summary>
         /// Our current user.
@@ -79,7 +70,7 @@ namespace Fitness.BL.Controller
         /// <returns>List of Activities.</returns>
         private List<Activity> GetAllActivities()
         {
-            return Load<List<Activity>>(ExercisesFileName) ?? new List<Activity>();
+            return Load<Activity>() ?? new List<Activity>();
         }
         /// <summary>
         /// Get the saved exercise's list.
@@ -87,15 +78,15 @@ namespace Fitness.BL.Controller
         /// <returns>List of Exercises.</returns>
         private List<Exercise> GetAllExercises()
         {
-            return Load<List<Exercise>>(ExercisesFileName) ?? new List<Exercise>();
+            return Load<Exercise>() ?? new List<Exercise>();
         }
         /// <summary>
         /// Save data about Activities and exercises.
         /// </summary>
         private void Save()
         {
-            Save(ExercisesFileName, Exercises);
-            Save(ActivitiesFileName, Activities);
+            Save(Exercises);
+            Save(Activities);
             
         }
     }

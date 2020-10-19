@@ -15,6 +15,10 @@ namespace Fitness.BL.Model
         /// Name of gender.
         /// </summary>
         public string Name { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
+
+        public Gender() { }
         /// <summary>
         /// Create new gender.
         /// </summary>

@@ -39,7 +39,9 @@ namespace Fitness.CMD
 
                 var birthDate = ParseDateTime(resourceManager.GetString("Date", culture), resourceManager, culture);
 
-                userController.SetNewUSerData(gender, birthDate, weight, height);
+                //var age = ParseDouble(resourceManager.GetString("Age", culture), resourceManager, culture);
+
+                userController.SetNewUserData(gender, birthDate, weight, height );
 
             }
             while (true)
@@ -56,10 +58,10 @@ namespace Fitness.CMD
                 {
                     case ConsoleKey.E:
                         var foods = EnterEating(resourceManager, culture);
-                        eatingController.Add(foods.Food);
+                        eatingController.Add(foods.Food , foods.Weight);
                         foreach (var item in eatingController.Eating.Foods)
                         {
-                            Console.WriteLine($"\t{item.Name} ");
+                            Console.WriteLine($"\t{item.Key} - {item.Value} ");
                         }
                         break;
                     case ConsoleKey.A:

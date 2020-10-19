@@ -20,13 +20,14 @@ namespace Fitness.BL.Model
         /// <summary>
         /// Gender of the user.
         /// </summary>
-        public Gender Gender { get; set; } 
+        public int? GenderId { get; set; }
+        public virtual Gender Gender { get; set; }
 
         /// <summary>
         /// Birthday of the user.
         /// </summary>
-        public DateTime BirthDate { get; set; }
-        
+        //public DateTime BirthDate { get; set; }
+
         /// <summary>
         /// Weight of the user.
         /// </summary>
@@ -37,49 +38,66 @@ namespace Fitness.BL.Model
         /// </summary>
         public double Height { get; set; }
 
+        public DateTime BirthDate { get; set; } = DateTime.Now;
         /// <summary>
         /// Age of the user.
         /// </summary>
         public int Age { get { return DateTime.Now.Year - BirthDate.Year; } }
+        public virtual ICollection<Eating> Eatings { get; set; }
+        public virtual ICollection<Exercise> Exercises { get; set; }
         #endregion
+        public User() { }
         /// <summary>
         /// Create a new user.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="gender"></param>
-        /// <param name="birthDate"></param>
         /// <param name="weight"></param>
         /// <param name="height"></param>
-        public User(string name, 
-                    Gender gender, 
+//DateTime nowDate = DateTime.Today;
+        //int age = nowDate.Year - birthDate.Year;
+        //if (birthDate > nowDate.AddYears(-age)) age--;
+
+      
+
+        /// <summary>
+        /// Создать нового пользователя.
+        /// </summary>
+        /// <param name="name"> Имя. </param>
+        /// <param name="gender"> Пол. </param>
+        /// <param name="birthDate"> Дата рождения. </param>
+        /// <param name="weight"> Вес. </param>
+        /// <param name="height"> Рост. </param>
+        public User(string name,
+                    Gender gender,
                     DateTime birthDate,
-                    double weight, 
+                    double weight,
                     double height)
         {
-            #region Condition check
+            #region Проверка условий
             if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("Name of the user can't be empty", nameof(name));
+                throw new ArgumentNullException("Имя пользователя не может быть пустым или null", nameof(name));
             }
 
             if (gender == null)
             {
-                throw new ArgumentNullException("Gender can't be empty", nameof(gender));
+                throw new ArgumentNullException("Пол не может быть null.", nameof(gender));
             }
 
             if (birthDate < DateTime.Parse("01.01.1900") || birthDate >= DateTime.Now)
             {
-                throw new ArgumentException("Date of birth isn't possible", nameof(birthDate));
+                throw new ArgumentException("Невозможная дата рождения.", nameof(birthDate));
             }
 
             if (weight <= 0)
             {
-                throw new ArgumentException("Weight cannot be <= 0", nameof(weight));
+                throw new ArgumentException("Вес не может быть меньше либо равен нулю.", nameof(weight));
             }
 
             if (height <= 0)
             {
-                throw new ArgumentException("Height cannot be <= 0", nameof(height));
+                throw new ArgumentException("Рост не может быть меньше либо равен нулю.", nameof(height));
             }
             #endregion
 

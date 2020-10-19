@@ -16,12 +16,14 @@ namespace Fitness.BL.Model
         /// Activity name
         /// </summary>
         public string Name { get; set; }
+
+        public virtual ICollection<Exercise> Exercises { get; set; }
         /// <summary>
         /// The number of calories expended during exercise
         /// </summary>
         public double CaloriesPerMinute { get; set; }
 
-        public Activity(string name) : this(name, 0) { }
+        public Activity() { }
         /// <summary>
         /// Creating new activity
         /// </summary>

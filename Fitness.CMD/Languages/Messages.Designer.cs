@@ -61,6 +61,15 @@ namespace Fitness.CMD.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to вік.
+        /// </summary>
+        internal static string Age {
+            get {
+                return ResourceManager.GetString("Age", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to початок вправи.
         /// </summary>
         internal static string Begin {

@@ -37,26 +37,6 @@ namespace Fitness.BL.Migrations
                     b.ToTable("Activities");
                 });
 
-            modelBuilder.Entity("Fitness.BL.Model.Eating", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Moment")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Eatings");
-                });
-
             modelBuilder.Entity("Fitness.BL.Model.Exercise", b =>
                 {
                     b.Property<int>("Id")
@@ -98,9 +78,6 @@ namespace Fitness.BL.Migrations
                     b.Property<double>("Carbohydrates")
                         .HasColumnType("float");
 
-                    b.Property<int?>("EatingId")
-                        .HasColumnType("int");
-
                     b.Property<double>("Fats")
                         .HasColumnType("float");
 
@@ -111,8 +88,6 @@ namespace Fitness.BL.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EatingId");
 
                     b.ToTable("Foods");
                 });
@@ -161,41 +136,25 @@ namespace Fitness.BL.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Fitness.BL.Model.Eating", b =>
-                {
-                    b.HasOne("Fitness.BL.Model.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Fitness.BL.Model.Exercise", b =>
                 {
                     b.HasOne("Fitness.BL.Model.Activity", "Activity")
-                        .WithMany()
+                        .WithMany("Exercises")
                         .HasForeignKey("ActivityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Fitness.BL.Model.User", "User")
-                        .WithMany()
+                        .WithMany("Exercises")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Fitness.BL.Model.Food", b =>
-                {
-                    b.HasOne("Fitness.BL.Model.Eating", null)
-                        .WithMany("Foods")
-                        .HasForeignKey("EatingId");
-                });
-
             modelBuilder.Entity("Fitness.BL.Model.User", b =>
                 {
                     b.HasOne("Fitness.BL.Model.Gender", "Gender")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("GenderId");
                 });
 #pragma warning restore 612, 618
