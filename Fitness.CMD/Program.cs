@@ -37,11 +37,11 @@ namespace Fitness.CMD
 
                 var height = ParseDouble(resourceManager.GetString("He", culture), resourceManager, culture);
 
-                var birthDate = ParseDateTime(resourceManager.GetString("Date", culture), resourceManager, culture);
+                //var birthDate = ParseDateTime(resourceManager.GetString("Date", culture), resourceManager, culture);
 
                 //var age = ParseDouble(resourceManager.GetString("Age", culture), resourceManager, culture);
 
-                userController.SetNewUserData(gender, birthDate, weight, height );
+                userController.SetNewUserData(gender, weight, height );
 
             }
             while (true)
@@ -61,7 +61,7 @@ namespace Fitness.CMD
                         eatingController.Add(foods.Food , foods.Weight);
                         foreach (var item in eatingController.Eating.Foods)
                         {
-                            Console.WriteLine($"\t{item.Key} - {item.Value} ");
+                            Console.WriteLine($"\t{item.Name} - {item.Weight}");
                         }
                         break;
                     case ConsoleKey.A:
@@ -112,7 +112,7 @@ namespace Fitness.CMD
             var carbohydrates = ParseDouble(resourceManager.GetString("Carboh", culture), resourceManager, culture);
 
             var weight = ParseDouble(resourceManager.GetString("Weight", culture), resourceManager, culture);
-            var product = new Food(food, calories, proteins, fats, carbohydrates);
+            var product = new Food(food, calories, proteins, fats, carbohydrates, weight);
             return (Food: product, Weight: weight);
         }
 

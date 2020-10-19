@@ -32,9 +32,9 @@ namespace Fitness.BL.Model
         /// </summary>
         public double Calories { get; set; }
 
-        
+        public double Weight { get; set; }
 
-        public virtual ICollection<Eating> Eatings { get; set; }
+        //public virtual ICollection<Eating> Eatings { get; set; }
         /// <summary>
         /// Create a new food.
         /// </summary>
@@ -49,7 +49,7 @@ namespace Fitness.BL.Model
         /// <param name="proteins"></param>
         /// <param name="fats"></param>
         /// <param name="carbohydrates"></param>
-        public Food(string name, double calories, double proteins, double fats, double carbohydrates)
+        public Food(string name, double calories, double proteins, double fats, double carbohydrates, double weight)
         {
             //TODO exception
             Name = name;
@@ -57,6 +57,7 @@ namespace Fitness.BL.Model
             Proteins = proteins / 100.0;
             Fats = fats / 100.0;
             Carbohydrates = carbohydrates / 100.0;
+            Weight = weight;
             
 
         }

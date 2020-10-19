@@ -23,14 +23,14 @@ namespace Fitness.BL.Controller.Tests
             // Arrange
             var userName = Guid.NewGuid().ToString();
             
-            var weight = 90;
-            var height = 190;
+            var weight = 90.0;
+            var height = 190.0;
             var gender = "man";
-            var birthdate = DateTime.Now.AddYears(-18);
+  
             var controller = new UserController(userName);
 
             // Act
-            controller.SetNewUserData(gender,birthdate, weight, height);
+            controller.SetNewUserData(gender, weight, height);
             var controller2 = new UserController(userName);
             
             //Assert
@@ -39,7 +39,7 @@ namespace Fitness.BL.Controller.Tests
             Assert.AreEqual(gender, controller2.CurrentUser.Gender.Name);
             Assert.AreEqual(weight, controller2.CurrentUser.Weight);
             Assert.AreEqual(height, controller2.CurrentUser.Height);
-            Assert.AreEqual(birthdate, controller2.CurrentUser.BirthDate);
+
         }
 
         [TestMethod()]

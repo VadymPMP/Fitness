@@ -38,11 +38,10 @@ namespace Fitness.BL.Model
         /// </summary>
         public double Height { get; set; }
 
-        public DateTime BirthDate { get; set; } = DateTime.Now;
+    
         /// <summary>
         /// Age of the user.
         /// </summary>
-        public int Age { get { return DateTime.Now.Year - BirthDate.Year; } }
         public virtual ICollection<Eating> Eatings { get; set; }
         public virtual ICollection<Exercise> Exercises { get; set; }
         #endregion
@@ -60,17 +59,9 @@ namespace Fitness.BL.Model
 
       
 
-        /// <summary>
-        /// Создать нового пользователя.
-        /// </summary>
-        /// <param name="name"> Имя. </param>
-        /// <param name="gender"> Пол. </param>
-        /// <param name="birthDate"> Дата рождения. </param>
-        /// <param name="weight"> Вес. </param>
-        /// <param name="height"> Рост. </param>
         public User(string name,
                     Gender gender,
-                    DateTime birthDate,
+                   
                     double weight,
                     double height)
         {
@@ -85,10 +76,7 @@ namespace Fitness.BL.Model
                 throw new ArgumentNullException("Пол не может быть null.", nameof(gender));
             }
 
-            if (birthDate < DateTime.Parse("01.01.1900") || birthDate >= DateTime.Now)
-            {
-                throw new ArgumentException("Невозможная дата рождения.", nameof(birthDate));
-            }
+           
 
             if (weight <= 0)
             {
@@ -103,7 +91,7 @@ namespace Fitness.BL.Model
 
             Name = name;
             Gender = gender;
-            BirthDate = birthDate;
+          
             Weight = weight;
             Height = height;
         }
@@ -129,7 +117,7 @@ namespace Fitness.BL.Model
         /// <returns>String</returns>
         public override string ToString()
         {
-            return Name + " " + Age;
+            return Name + " " + Gender + " " + Weight + " " + Height ;
         }
 
 
